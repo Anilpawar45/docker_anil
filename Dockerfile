@@ -1,7 +1,4 @@
-# Use an official Ubuntu as a parent image
 FROM ubuntu:latest
-
-# Install dependencies
 RUN apt-get update && \
     apt-get install -y openjdk-11-jdk wget && \
     rm -rf /var/lib/apt/lists/*
