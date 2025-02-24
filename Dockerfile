@@ -11,12 +11,12 @@ ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 
 # Download and extract Tomcat
-RUN wget -qO- https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.17/bin/apache-tomcat-10.1.17.tar.gz | tar xz -C /usr/local && \
-    mv /usr/local/apache-tomcat-10.1.17 $CATALINA_HOME && \
+RUN wget -O https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.100/bin/apache-tomcat-9.0.100.tar.gz| tar xz -C /usr/local && \
+    mv /usr/local/apache-tomcat-9.0.100 $CATALINA_HOME && \
     chmod +x $CATALINA_HOME/bin/*.sh
 
 # Expose the default Tomcat port
 EXPOSE 8080
 
 # Start Tomcat
-CMD ["catalina.sh", "run"]
+CMD ["./bin/catalina.sh", "run"]
