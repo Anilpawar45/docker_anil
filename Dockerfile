@@ -2,9 +2,9 @@
 FROM ubuntu:latest
 
 # Set environment variables
-ENV DEBIAN_FRONTEND=noninteractive \
-    CATALINA_HOME=/usr/local/tomcat \
-    PATH="$CATALINA_HOME/bin:$PATH"
+# ENV DEBIAN_FRONTEND=noninteractive \
+#     CATALINA_HOME=/usr/local/tomcat \
+#     PATH="$CATALINA_HOME/bin:$PATH"
 
 # Install required packages and dependencies
 RUN apt-get update && apt-get install -y \
