@@ -14,11 +14,9 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Define Tomcat version
-ENV https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.100/bin/apache-tomcat-9.0.100.tar.gz ./
+ENV https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.100/bin/apache-tomcat-9.0.100.tar.gz \
 # Download and extract Tomcat
-RUN curl -fsSL "$TOMCAT_URL" | tar xz -C /usr/local/ && \
-    mv /usr/local/apache-tomcat-${TOMCAT_VERSION} "$CATALINA_HOME" && \
-    rm -rf "$CATALINA_HOME/webapps/examples" "$CATALINA_HOME/webapps/docs"
+RUN tar -xzf apache-tomcat-9.0.100 -C /opt
 
 # Expose Tomcat port
 EXPOSE 8080
@@ -27,4 +25,4 @@ EXPOSE 8080
 WORKDIR /opt/apache-tomcat-9.0.100/
 
 # Start Tomcat server
-CMD ["catalina.sh", "run"]
+CMD ["./bin/catalina.sh", "run"]
