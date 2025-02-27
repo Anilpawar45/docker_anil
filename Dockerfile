@@ -34,3 +34,4 @@ ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.100/bin/apache-tomcat-9.0.100.
 RUN tar -xvf ./apache-tomcat-9.0.100.tar.gz -C /opt
 WORKDIR /opt/
 ENTRYPOINT ["/opt/apache-tomcat-9.0.100/bin/catalina.sh","run"]
+EXPOSE 8080
