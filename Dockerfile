@@ -1,19 +1,16 @@
-FROM ubuntu:latest
-RUN apt-get update && apt-get install -y \
-    openjdk-11-jdk \
-    curl \
-    unzip \
-    && rm -rf /var/lib/apt/lists/*
-# Define Tomcat version
-ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.100/bin/apache-tomcat-9.0.100.tar.gz ./
-# Download and extract Tomcat
-RUN tar -xvf apache-tomcat-9.0.100.tar.gz -C /opt
 
-# Expose Tomcat port
+FROM ubuntu:20.04
+RUN apt-get update
+ENV DEBIAN_FRONTEND=noninteractive
+ENV department=dev
+RUN apt-get install apache2 -y
+RUN apt install -y apache2-utils 
+RUN apt clean
+WORKDIR /opt
+VOLUME [ "/data" ]
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page296/oxer.zip /opt/
+COPY ./index.html /var/www/html/index.html
 EXPOSE 8080
+CMD [ "apache2ctl", "-DFOREGROUND" ]
+ENTRYPOINT [ "apache2ctl", "-DFOREGROUND" ]
 
-# Set working directory
-WORKDIR /opt/apache-tomcat-9.0.100/
-
-# Start Tomcat server
-CMD ["./bin/catalina.sh", "run"]
