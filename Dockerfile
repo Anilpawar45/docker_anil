@@ -30,7 +30,7 @@ FROM ubuntu:latest
 RUN apt-get update 
 RUN apt-get install -y openjdk-11-jdk wget 
 RUN rm -rf /var/lib/apt/lists/*
-ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.100/bin/apache-tomcat-9.0.100.tar.gz ./
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.100/bin/apache-tomcat-9.0.100.tar.gz /opt
 RUN tar -xvf ./apache-tomcat-9.0.100.tar.gz -C /opt
 WORKDIR /opt/apache-tomcat-9.0.100/
 ENTRYPOINT ["/opt/apache-tomcat-9.0.100/bin/catalina.sh","run"]
