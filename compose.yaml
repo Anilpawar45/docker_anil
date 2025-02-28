@@ -1,0 +1,14 @@
+services:
+  server_from_dockerfile:
+    build: .
+    ports:
+      - "81:80"
+  webserver:
+     image: anilpawar45/tomcat:server
+     ports:
+       - "8080:8080"
+  appserver:
+      image: anilpawar45/apache2:webserver
+      ports:
+        - "80:80"
+      
