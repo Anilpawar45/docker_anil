@@ -4,11 +4,11 @@ services:
     ports:
       - "81:80"
   webserver:
-     image: anilpawar45/tomcat:server
+     image: anilpawar45/tomcat:v1
      ports:
        - "8080:8080"
   appserver:
-      image: anilpawar45/apache2:webserver
+      image: anilpawar45/apache2:apache2
       ports:
         - "80:80"
       
